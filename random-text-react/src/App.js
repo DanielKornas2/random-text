@@ -29,8 +29,7 @@ class App extends Component {
         temporarySentence: e.target.value,
       }
     )
-  }
-  
+  }  
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -39,16 +38,20 @@ class App extends Component {
       id: sentences.length,
       text: this.state.temporarySentence,
     }
-    console.log(sentences)
     this.setState({
       sentences: sentences,
+      temporarySentence: "",
     })
+  }
+
+  handleClick = () => {
+    console.log("clicked")
   }
 
   render() {
     return (
       <div>
-        <button>Show random sentence</button>
+        <button onClick={this.handleClick}>Show random sentence</button>
         <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.handleChange} value={this.state.temporarySentence}></input>
           <input type="submit" defaultValue="Add sentence"></input>
