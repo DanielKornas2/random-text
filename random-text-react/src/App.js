@@ -33,7 +33,7 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const sentences = this.state.sentences;
+    const sentences = [...this.state.sentences];
     sentences[sentences.length] = {
       id: sentences.length,
       text: this.state.temporarySentence,
@@ -45,7 +45,13 @@ class App extends Component {
   }
 
   handleClick = () => {
-    console.log("clicked")
+    const sentencesLength = this.state.sentences.length;
+    const randomNumber = Math.floor(Math.random() * sentencesLength )
+    alert(
+      `Your random sentence is: ${this.state.sentences[randomNumber].text}
+      All sentences: ${this.state.sentences.map(sentence => sentence.text)}
+      `
+    )
   }
 
   render() {
